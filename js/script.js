@@ -32,6 +32,7 @@ const app = new Vue({
         ],
 
         counter: 0,
+        fullCounter: false,
         seconds: 3,
         mouseHover: false
     },
@@ -67,8 +68,16 @@ const app = new Vue({
 
     mounted(){
         setInterval(() =>{
-            if(!this.mouseHover){
+            if(!this.mouseHover && !this.fullCounter){
                 this.counterAdd();
+            }else if(!this.mouseHover && this.fullCounter){
+                this.counterMinus();
+            }
+
+            if(this.counter === 4){
+                this.fullCounter = true;
+            }else if(this.counter === 0){
+                this.fullCounter = false;
             }
         }, this.seconds * 1000)
     }
