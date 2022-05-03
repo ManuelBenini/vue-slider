@@ -29,8 +29,41 @@ const app = new Vue({
                 title: 'Paradise',
                 text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis.',
             }
-        ]
-    }
+        ],
+
+        counter: 0,
+        activeClass: 'active',
+        isActive: false
+    },
+
+    methods: {
+        activeChanger(index){
+            if(index === this.counter){
+                return 'active'
+            }
+        },
+
+        counterAdd(){
+            this.counter++;
+            if(this.counter > this.slides.length - 1){
+                this.counter = 0;
+            }
+            console.log(this.counter);
+        },
+
+        counterMinus(){
+            this.counter--;
+            if(this.counter < 0){
+                this.counter = this.slides.length - 1
+            }
+            console.log(this.counter);
+        },
+
+        imagePicker(index){
+            this.counter = 0;
+            this.counter = this.counter + index;
+        }
+    },
 
 });
 
