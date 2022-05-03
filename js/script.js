@@ -32,8 +32,8 @@ const app = new Vue({
         ],
 
         counter: 0,
-        activeClass: 'active',
-        isActive: false
+        seconds: 3,
+        mouseHover: false
     },
 
     methods: {
@@ -64,6 +64,14 @@ const app = new Vue({
             this.counter = this.counter + index;
         }
     },
+
+    mounted(){
+        setInterval(() =>{
+            if(!this.mouseHover){
+                this.counterAdd();
+            }
+        }, this.seconds * 1000)
+    }
 
 });
 
